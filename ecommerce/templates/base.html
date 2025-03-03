@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}E-Commerce{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <header>
+        <a href="{% url 'home' %}" class="logo">🛍 ร้านค้าออนไลน์</a>
+        <input type="text" placeholder="ค้นหาสินค้า..." class="search-bar">
+
+        {% if user.is_authenticated %}
+            <div class="user-menu">
+                <a href="{% url 'cart' %}" class="cart-btn">🛒 ตะกร้า ({{ cart_count|default:0 }})</a>
+                <div class="dropdown-container">
+                    <span class="user-name" id="userDropdown">👤 {{ user.username }} ▼</span>
+                    <ul class="dropdown" id="dropdownMenu">
+                        <li><a href="{% url 'order_status' %}">📦 คำสั่งซื้อของฉัน</a></li>
+                        <li><a href="{% url 'logout' %}">🚪 ออกจากระบบ</a></li>
+                    </ul>
+                </div>
+            </div>
+        {% else %}
+            <div class="auth-links">
+                <a href="{% url 'login' %}" class="btn">เข้าสู่ระบบ</a>
+                <a href="{% url 'register' %}" class="btn primary">สมัครสมาชิก</a>
+            </div>
+        {% endif %}
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <script src="{% static 'js/scripts.js' %}"></script>
+</body>
+</html>

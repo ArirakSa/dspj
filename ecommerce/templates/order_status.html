@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}ติดตามคำสั่งซื้อ{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/orderstatus.css' %}">
+
+<div class="order-container">
+    <h1>📦 ติดตามคำสั่งซื้อ</h1>
+
+    {% if orders %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>📅 วันที่สั่งซื้อ</th>
+                <th>📆 วันรับสินค้า</th>  <!-- ✅ เพิ่มคอลัมน์วันรับสินค้า -->
+                <th>💰 ราคารวม</th>
+                <th>📦 สถานะ</th>
+                <th>💳 วิธีชำระเงิน</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in orders %}
+            <tr>
+                <td>{{ order.created_at|date:"Y-m-d H:i" }}</td>
+                <td>
+                    {% if order.pickup_time %}
+                        {{ order.pickup_time|date:"Y-m-d H:i" }}  <!-- ✅ แสดงวันรับสินค้า -->
+                    {% else %}
+                        <span class="text-muted">❌ ไม่ระบุ</span>  <!-- ✅ ถ้าไม่มีวันรับ -->
+                    {% endif %}
+                </td>
+                <td>{{ order.total_price }} บาท</td>
+                <td>
+                    {% if order.status == "preparing" %}
+                        <span class="badge bg-warning">กำลังเตรียมสินค้า</span>
+                    {% elif order.status == "ready" %}
+                        <span class="badge bg-info">พร้อมรับสินค้า</span>
+                    {% elif order.status == "completed" %}
+                        <span class="badge bg-success">สำเร็จ</span>
+                    {% elif order.status == "cancelled" %}
+                        <span class="badge bg-danger">❌ ยกเลิก</span>
+                    {% endif %}
+                </td>
+                <td>
+                    {% if order.payment_method == "cash" %}
+                        💵 เงินสด
+                    {% elif order.payment_method == "transfer" %}
+                        💳 โอนเงิน
+                        {% if order.slip_image %}
+                            <a href="{{ order.slip_image.url }}" target="_blank" class="slip-link">📄 ดูสลิป</a>
+                        {% else %}
+                            <span class="text-muted">❌ ไม่มีสลิป</span>
+                        {% endif %}
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p class="empty-cart">🛒 คุณยังไม่มีคำสั่งซื้อ</p>
+    {% endif %}
+
+    <a href="{% url 'home' %}" class="btn-primary">🔙 กลับไปเลือกสินค้า</a>
+</div>
+{% endblock %}

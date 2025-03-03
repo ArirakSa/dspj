@@ -1,0 +1,121 @@
+/* ✅ ตั้งค่าทั่วไป */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to right, #cce5ff, #e0f7ff); /* ฟ้าอ่อนขาว */
+    color: #333;
+}
+
+/* ✅ ตั้งค่ากล่องคำสั่งซื้อ */
+.container {
+    max-width: 1100px;
+    margin: 50px auto;
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* ✅ หัวข้อ */
+h1 {
+    text-align: center;
+    color: #0077b6;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+/* ✅ แจ้งเตือน */
+.alert {
+    border-radius: 10px;
+    text-align: center;
+    font-size: 16px;
+    padding: 10px;
+}
+
+/* ✅ ปรับตารางคำสั่งซื้อ */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* ✅ หัวตาราง */
+.table th {
+    background: #0077b6;
+    color: white;
+    padding: 12px;
+    text-align: center;
+}
+
+/* ✅ เนื้อหาในตาราง */
+.table td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+}
+
+/* ✅ ป้ายสถานะ (Badge) */
+.status-badge {
+    display: inline-block;
+    padding: 8px 12px;
+    border-radius: 10px;
+    font-weight: bold;
+    color: white;
+    font-size: 14px;
+}
+
+/* ✅ สีของสถานะ */
+.bg-warning { background-color: #f39c12; } /* กำลังเตรียมสินค้า */
+.bg-info { background-color: #3498db; } /* พร้อมรับสินค้า */
+.bg-success { background-color: #2ecc71; } /* สำเร็จ */
+.bg-danger { background-color: #e74c3c; } /* ยกเลิก */
+
+/* ✅ ปุ่มอัปเดตสถานะ */
+.btn-update {
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: 0.3s;
+    background: #0077b6;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-update:hover {
+    background: #005f99;
+}
+
+/* ✅ ปรับขนาดฟอร์มเลือกสถานะ */
+.form-select-sm {
+    font-size: 14px;
+    padding: 6px;
+    border-radius: 8px;
+}
+
+/* ✅ ปรับแจ้งเตือนเมื่อไม่มีคำสั่งซื้อ */
+.no-orders {
+    text-align: center;
+    font-size: 18px;
+    color: #777;
+    margin-top: 20px;
+}
+
+/* ✅ ปรับตารางให้รองรับมือถือ */
+@media (max-width: 768px) {
+    .table th, .table td {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .btn-update {
+        font-size: 12px;
+        padding: 5px 10px;
+    }
+
+    .form-select-sm {
+        font-size: 12px;
+    }
+}

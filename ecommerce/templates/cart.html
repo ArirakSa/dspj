@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}ตะกร้าสินค้า{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/cart.css' %}">
+
+<h1 class="page-title">🛒 ตะกร้าสินค้าของคุณ</h1>
+
+{% if cart_items %}
+<div class="cart-container">
+    <table class="cart-table">
+        <thead>
+            <tr>
+                <th>สินค้า</th>
+                <th>จำนวน</th>
+                <th>ราคา</th>
+                <th>ลบ</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in cart_items %}
+            <tr>
+                <td>{{ item.product.name }}</td>
+                <td>{{ item.quantity }}</td>
+                <td>{{ item.product.price }} บาท</td>
+                <td>
+                    <form action="{% url 'remove_from_cart' item.product.id %}" method="POST">
+                        {% csrf_token %}
+                        <button type="submit" class="btn-remove">❌</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h3 class="total-price">💰 ราคารวม: {{ total_price }} บาท</h3>
+
+    <a href="{% url 'checkout' %}" class="btn btn-success">ไปที่เช็คเอาท์</a>
+</div>
+{% else %}
+<p class="empty-cart">🛍 ตะกร้าของคุณว่างเปล่า</p>
+{% endif %}
+
+<a href="{% url 'home' %}" class="btn btn-primary">🔙 กลับไปเลือกสินค้า</a>
+
+{% endblock %}

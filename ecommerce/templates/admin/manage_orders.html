@@ -1,0 +1,6 @@
+<h1>จัดการคำสั่งซื้อ</h1>
+<ul>
+    {% for order in orders %}
+    <li>คำสั่งซื้อ {{ order.id }} - สถานะ: {{ order.status }}</li>
+    {% endfor %}
+</ul>

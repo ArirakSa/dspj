@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}หน้าหลัก{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+
+<h1 class="page-title">🛍 รายการสินค้า</h1>
+
+<div class="product-list">
+    {% for product in products %}
+    <div class="product-card">
+        <img src="{{ product.image_url.url }}" alt="{{ product.name }}">
+        <h3>{{ product.name }}</h3>
+        <p class="price">{{ product.price }} บาท</p>
+        <a href="{% url 'product_detail' product.id %}" class="btn btn-info">ดูรายละเอียด</a>
+
+        {% if user.is_authenticated %}
+            <form action="{% url 'add_to_cart' product.id %}" method="POST">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-success">เพิ่มลงตะกร้า</button>
+            </form>
+        {% else %}
+            <p class="text-muted">เข้าสู่ระบบเพื่อเพิ่มสินค้าในตะกร้า</p>
+        {% endif %}
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

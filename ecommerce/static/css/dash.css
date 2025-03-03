@@ -1,0 +1,107 @@
+/* ✅ ตั้งค่าทั่วไป */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to right, #cce5ff, #e0f7ff); /* ฟ้าอ่อนขาว */
+    color: #333;
+}
+
+/* ✅ ตั้งค่ากล่องแดชบอร์ด */
+.container {
+    max-width: 1000px;
+    margin-top: 50px;
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* ✅ หัวข้อ */
+h1, h2 {
+    color: #0077b6;
+}
+
+/* ✅ การ์ดสรุปยอด */
+.alert {
+    border-radius: 10px;
+    text-align: center;
+    font-size: 18px;
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* ✅ ปรับตารางสินค้า */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+.table th, .table td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+}
+
+.table th {
+    background: #0077b6;
+    color: white;
+}
+
+/* ✅ ปรับปุ่มให้ดูพรีเมียม */
+.btn {
+    padding: 10px 15px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+/* ✅ ปุ่มเพิ่มสินค้า */
+.btn-primary {
+    background: #0077b6;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #005f99;
+}
+
+/* ✅ ปุ่มแก้ไข */
+.btn-warning {
+    background: #f39c12;
+    color: white;
+}
+
+.btn-warning:hover {
+    background: #d68910;
+}
+
+/* ✅ ปุ่มลบ */
+.btn-danger {
+    background: #e74c3c;
+    color: white;
+}
+
+.btn-danger:hover {
+    background: #c0392b;
+}
+
+/* ✅ ปุ่มออกจากระบบ */
+.btn-logout {
+    background: #e74c3c;
+    color: white;
+    font-weight: bold;
+}
+
+.btn-logout:hover {
+    background: #c0392b;
+}
+
+/* ✅ ปรับขนาดรูปสินค้า */
+.product-card img {
+    width: 100%;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 5px;
+}

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ product.name }}{% endblock %}
+
+{% block content %}
+<div class="product-detail">
+    <img src="{{ product.image_url.url }}" alt="{{ product.name }}">
+    <h1>{{ product.name }}</h1>
+    <p>{{ product.description }}</p>
+    <p><strong>ราคา:</strong> {{ product.price }} บาท</p>
+
+    {% if user.is_authenticated %}
+        <form method="POST" action="{% url 'add_to_cart' product.id %}">
+            {% csrf_token %}
+            <input type="number" name="quantity" value="1" min="1">
+            <button type="submit">เพิ่มลงตะกร้า</button>
+        </form>
+    {% else %}
+        <p>กรุณา <a href="{% url 'login' %}">เข้าสู่ระบบ</a> เพื่อเพิ่มสินค้าลงตะกร้า</p>
+    {% endif %}
+</div>
+{% endblock %}

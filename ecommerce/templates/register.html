@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ลงทะเบียนแอดมิน</title>
+    <link rel="stylesheet" href="{% static 'css/register.css' %}">
+</head>
+<body>
+    <div class="register-container">
+        <h2 class="register-title">ลงทะเบียนแอดมิน</h2>
+
+        <!-- แสดงข้อความแจ้งเตือน -->
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert {% if message.tags %} alert-{{ message.tags }}{% endif %}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        <form method="POST">
+            {% csrf_token %}
+            <label for="username">ชื่อผู้ใช้</label>
+            <input type="text" name="username" id="username" required>
+
+            <label for="email">อีเมล</label>
+            <input type="email" name="email" id="email" required>
+
+            <label for="password1">รหัสผ่าน</label>
+            <input type="password" name="password1" id="password1" required>
+
+            <label for="password2">ยืนยันรหัสผ่าน</label>
+            <input type="password" name="password2" id="password2" required>
+
+            <button type="submit">สมัครสมาชิก</button>
+        </form>
+
+        <p class="login-link">มีบัญชีอยู่แล้ว? <a href="{% url 'login' %}">เข้าสู่ระบบ</a></p>
+    </div>
+</body>
+</html>

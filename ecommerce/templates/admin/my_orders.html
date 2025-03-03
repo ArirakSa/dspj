@@ -1,0 +1,83 @@
+{% load static %}
+{% block title %}คำสั่งซื้อของฉัน{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/my_orders.css' %}">
+
+<div class="container">
+    <h1>📦 คำสั่งซื้อของฉัน</h1>
+
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-info">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+
+    {% if orders %}
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>👤 ลูกค้า</th>  <!-- ✅ เพิ่มคอลัมน์ชื่อผู้ใช้ -->
+                <th>🆔 รหัสคำสั่งซื้อ</th>
+                <th>💰 ยอดรวม</th>
+                <th>💳 วิธีชำระเงิน</th>
+                <th>📌 สถานะ</th>
+                <th>📅 วันที่</th>
+                <th>⚙️ อัปเดตสถานะ</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in orders %}
+            <tr>
+                <td>{{ order.user.username }}</td>  <!-- ✅ แสดง Username ของผู้สั่งซื้อ -->
+                <td>{{ order.id }}</td>
+                <td>{{ order.total_price }} ฿</td>
+                <td>
+                    {% if order.payment_method == "cash" %}
+                        💵 เงินสด
+                    {% elif order.payment_method == "transfer" %}
+                        💳 โอนเงิน
+                        {% if order.slip_image %}
+                            <a href="{{ order.slip_image.url }}" target="_blank" class="btn btn-sm btn-info">📄 ดูสลิป</a>
+                        {% else %}
+                            <span class="text-muted">❌ ไม่มีสลิป</span>
+                        {% endif %}
+                    {% endif %}
+                </td>
+                <td>
+                    {% if order.status == "preparing" %}
+                        <span class="status-badge bg-warning">⏳ กำลังเตรียมสินค้า</span>
+                    {% elif order.status == "ready" %}
+                        <span class="status-badge bg-info">✅ พร้อมรับสินค้า</span>
+                    {% elif order.status == "completed" %}
+                        <span class="status-badge bg-success">🎉 สำเร็จ</span>
+                    {% elif order.status == "cancelled" %}
+                        <span class="status-badge bg-danger">❌ ยกเลิก</span>
+                    {% endif %}
+                </td>
+                <td>{{ order.created_at|date:"d M Y H:i" }}</td>
+                <td>
+                    {% if request.user.role == "admin" %}
+                        <form method="POST" action="{% url 'update_order_status' order.id %}">
+                            {% csrf_token %}
+                            <select name="status" class="form-select form-select-sm d-inline w-auto">
+                                <option value="preparing" {% if order.status == "preparing" %}selected{% endif %}>⏳ กำลังเตรียมสินค้า</option>
+                                <option value="ready" {% if order.status == "ready" %}selected{% endif %}>✅ พร้อมรับสินค้า</option>
+                                <option value="completed" {% if order.status == "completed" %}selected{% endif %}>🎉 สำเร็จ</option>
+                                <option value="cancelled" {% if order.status == "cancelled" %}selected{% endif %}>❌ ยกเลิก</option>
+                            </select>
+                            <button type="submit" class="btn btn-sm btn-update">อัปเดต</button>
+                        </form>
+                    {% else %}
+                        <span class="text-muted">❌ ไม่สามารถเปลี่ยนสถานะได้</span>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+        <div class="alert alert-warning no-orders">⚠️ คุณยังไม่มีคำสั่งซื้อ</div>
+    {% endif %}
+</div>  
+{% endblock %}

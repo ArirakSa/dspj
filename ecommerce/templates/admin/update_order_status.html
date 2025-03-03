@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}อัปเดตสถานะคำสั่งซื้อ{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>🔄 อัปเดตสถานะคำสั่งซื้อที่ {{ order.id }}</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="id_status" class="form-label">เลือกสถานะใหม่:</label>
+            {{ form.status }}
+        </div>
+        <button type="submit" class="btn btn-success">บันทึก</button>
+        <a href="{% url 'my_orders' %}" class="btn btn-secondary">ย้อนกลับ</a>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,119 @@
+/* General reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Center the form */
+.container {
+    width: 100%;
+    max-width: 600px; /* จำกัดขนาดสูงสุดของฟอร์ม */
+    margin: 50px auto; /* จัดให้อยู่กลางหน้า */
+    padding: 30px;
+    background-color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    border: 1px solid #eee;
+}
+
+/* Heading */
+h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #4CAF50;
+}
+
+/* Form style */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Input fields */
+form input, form select, form textarea {
+    padding: 12px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    width: 100%;
+    transition: border-color 0.3s ease-in-out;
+}
+
+/* Focus state for inputs */
+form input:focus, form select:focus, form textarea:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+
+/* Submit button */
+form button {
+    padding: 12px;
+    font-size: 1.1rem;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+form button:hover {
+    background-color: #45a049;
+}
+
+form button:active {
+    background-color: #388e3c;
+}
+
+/* Input labels */
+form label {
+    font-weight: 600;
+    color: #555;
+}
+
+/* Optional styling for file inputs */
+form input[type="file"] {
+    padding: 5px;
+}
+
+/* Additional spacing and aesthetics */
+form .form-group {
+    margin-bottom: 20px;
+}
+
+form fieldset {
+    border: none;
+    padding: 0;
+}
+
+form legend {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #4CAF50;
+}
+
+/* Small screen / mobile responsiveness */
+@media (max-width: 600px) {
+    .container {
+        width: 90%;
+        padding: 20px;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+}

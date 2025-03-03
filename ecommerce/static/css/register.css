@@ -1,0 +1,100 @@
+ /* ตั้งค่าพื้นหลัง */
+ body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to right, #cce5ff, #e0f7ff); /* สีฟ้าอ่อน */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* กล่องฟอร์ม */
+.register-container {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    text-align: center;
+    width: 350px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* หัวข้อ */
+.register-title {
+    color: #0077b6;
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
+/* ฟอร์ม */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-weight: bold;
+    color: #333;
+    text-align: left;
+    margin-top: 10px;
+}
+
+/* ช่องกรอกข้อมูล */
+input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+input:focus {
+    outline: none;
+    border-color: #0077b6;
+    box-shadow: 0 0 5px rgba(0, 119, 182, 0.3);
+}
+
+/* ปุ่มสมัคร */
+button {
+    width: 100%;
+    padding: 12px;
+    background: #0077b6;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 8px;
+    margin-top: 15px;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #005f99;
+}
+
+/* ข้อความแจ้งเตือน */
+.alert {
+    background-color: #ff4d4d;
+    color: white;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+/* ลิงก์เข้าสู่ระบบ */
+.login-link {
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.login-link a {
+    color: #0077b6;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.login-link a:hover {
+    text-decoration: underline;
+}

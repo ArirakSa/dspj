@@ -1,0 +1,105 @@
+/* ✅ ตั้งค่าทั่วไป */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* ✅ พื้นหลัง */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(to right, #cce5ff, #e0f7ff); /* ฟ้าอ่อนขาว */
+    color: rgb(13, 11, 11);
+}
+
+/* ✅ กล่อง Login */
+.login-container {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(15px);
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    width: 350px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* ✅ หัวข้อ */
+.login-title {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #0077b6;
+}
+
+/* ✅ ช่องกรอกข้อมูล */
+input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    outline: none;
+    font-size: 14px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    transition: 0.3s;
+}
+
+/* ✅ ปรับสี placeholder */
+input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* ✅ เพิ่ม glow effect เมื่อ focus */
+input:focus {
+    border-color: #0077b6;
+    box-shadow: 0 0 8px rgba(0, 119, 182, 0.5);
+}
+
+/* ✅ ปุ่มเข้าสู่ระบบ */
+button {
+    width: 100%;
+    padding: 12px;
+    background: #0077b6;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: background 0.3s, transform 0.2s;
+}
+
+/* ✅ เพิ่มเอฟเฟกต์ Hover */
+button:hover {
+    background: #005f99;
+    transform: scale(1.05);
+}
+
+/* ✅ ข้อความแจ้งเตือน */
+.alert {
+    background: rgba(231, 76, 60, 0.8);
+    color: white;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+
+/* ✅ ลิงก์สมัครแอดมิน */
+.register-link {
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.register-link a {
+    color: #0077b6;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.register-link a:hover {
+    text-decoration: underline;
+}

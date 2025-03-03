@@ -1,0 +1,6 @@
+<h1>จัดการสินค้า</h1>
+<ul>
+    {% for product in products %}
+    <li>{{ product.name }} - ฿{{ product.price }} <a href="{% url 'edit_product' product.id %}">แก้ไข</a></li>
+    {% endfor %}
+</ul>

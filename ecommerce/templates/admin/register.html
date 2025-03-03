@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ลงทะเบียนแอดมิน</title>
+    <link rel="stylesheet" href="/static/styles.css"> <!-- เชื่อมไฟล์ CSS -->
+</head>
+<body>
+    <div class="register-container">
+        <h2 class="register-title">ลงทะเบียนแอดมิน</h2>
+
+        <!-- แสดงข้อความแจ้งเตือน -->
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert {% if message.tags %} alert-{{ message.tags }}{% endif %}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        <form method="POST">
+            {% csrf_token %}
+            <label for="username">ชื่อผู้ใช้:</label>
+            <input type="text" name="username" id="username" required>
+
+            <label for="email">อีเมล:</label>
+            <input type="email" name="email" id="email" required>
+
+            <label for="password1">รหัสผ่าน:</label>
+            <input type="password" name="password1" id="password1" required>
+
+            <label for="password2">ยืนยันรหัสผ่าน:</label>
+            <input type="password" name="password2" id="password2" required>
+
+            <button type="submit">สมัครสมาชิก</button>
+        </form>
+
+        <p>มีบัญชีอยู่แล้ว? <a href="{% url 'custom_admin_login' %}">เข้าสู่ระบบ</a></p>
+    </div>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .register-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            width: 300px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        .register-title {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            margin: 8px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #27ae60;
+            border: none;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #2ecc71;
+        }
+        .alert {
+            background-color: #e74c3c;
+            color: white;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</body>
+</html>

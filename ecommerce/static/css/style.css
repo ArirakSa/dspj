@@ -1,0 +1,295 @@
+/* ✅ ตั้งค่าทั่วไป */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f8ff; /* สีฟ้าอ่อน */
+    color: #333;
+}
+
+/* ✅ Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background: #87CEFA; /* ฟ้าอ่อน */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* ✅ โลโก้ */
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+}
+
+/* ✅ แถบค้นหา */
+.search-bar {
+    width: 250px;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 20px;
+    outline: none;
+    font-size: 16px;
+    background: white;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+/* ✅ เมนูผู้ใช้ */
+.user-menu {
+    display: flex;
+    align-items: center;
+}
+
+.cart-btn {
+    background: white;
+    padding: 8px 12px;
+    border-radius: 15px;
+    text-decoration: none;
+    font-weight: bold;
+    color: #0077b6;
+    transition: 0.3s;
+}
+
+.cart-btn:hover {
+    background: #e0f2ff;
+}
+
+/* ✅ Dropdown */
+.dropdown-container {
+    position: relative;
+    margin-left: 15px;
+}
+
+.user-name {
+    cursor: pointer;
+    font-weight: bold;
+    color: white;
+}
+
+/* ✅ ปรับ dropdown ให้ทำงานได้ */
+.dropdown {
+    position: absolute;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    list-style: none;
+    padding: 10px 0;
+    display: none; /* ซ่อนก่อน */
+    min-width: 150px;
+    top: 100%;
+    right: 0;
+}
+
+/* ✅ แสดง dropdown เมื่อมี class show */
+.dropdown.show {
+    display: block;
+}
+
+/* ✅ สไตล์ของรายการใน dropdown */
+.dropdown li {
+    padding: 8px 15px;
+}
+
+.dropdown li a {
+    text-decoration: none;
+    color: #333;
+    display: block;
+}
+
+.dropdown li a:hover {
+    background: #f0f8ff;
+}
+
+/* ✅ จัดให้ dropdown อยู่ใกล้ user */
+.dropdown-container {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+/* ✅ ปุ่มเข้าสู่ระบบ & สมัครสมาชิก */
+.auth-links .btn {
+    padding: 8px 15px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+.auth-links .btn.primary {
+    background: white;
+    color: #0077b6;
+    border: 2px solid #0077b6;
+    transition: 0.3s;
+}
+
+.auth-links .btn.primary:hover {
+    background: #0077b6;
+    color: white;
+}
+
+.auth-links .btn {
+    color: white;
+    border: 2px solid white;
+    transition: 0.3s;
+}
+
+.auth-links .btn:hover {
+    background: white;
+    color: #0077b6;
+}
+
+/* ✅ Main content */
+main {
+    padding: 20px;
+}
+
+/* ✅ กล่อง Login */
+.login-container {
+    width: 350px;
+    margin: 50px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* ✅ หัวข้อใน Login */
+.login-container h1 {
+    color: #0077b6;
+    margin-bottom: 15px;
+}
+
+/* ✅ แจ้งเตือน */
+.messages {
+    margin-bottom: 10px;
+}
+
+.error-message {
+    color: red;
+    font-size: 14px;
+    background: #ffe6e6;
+    padding: 8px;
+    border-radius: 5px;
+}
+
+/* ✅ Form Styles */
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.login-form label {
+    font-weight: bold;
+    color: #333;
+    text-align: left;
+}
+
+.login-form input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    width: 100%;
+}
+
+.login-form input:focus {
+    outline: none;
+    border-color: #0077b6;
+    box-shadow: 0 0 5px rgba(0, 119, 182, 0.3);
+}
+
+/* ✅ ปุ่ม Login */
+.login-form button {
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background: #0077b6;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.login-form button:hover {
+    background: #005f99;
+}
+
+/* ✅ ลิงก์สมัครสมาชิก */
+.register-link {
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.register-link a {
+    color: #0077b6;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.register-link a:hover {
+    text-decoration: underline;
+}
+
+/* ✅ ปรับแต่งตาราง */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+.table th, .table td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+}
+
+.table th {
+    background: #0077b6;
+    color: white;
+}
+
+/* ✅ ปุ่มหลัก */
+.btn-primary {
+    display: inline-block;
+    padding: 10px 15px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+    transition: 0.3s;
+    background: #0077b6;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    background: #005f99;
+}
+
+/* ✅ ป้ายสถานะ (Badge) */
+.badge {
+    padding: 8px 12px;
+    border-radius: 10px;
+    font-weight: bold;
+    color: white;
+}
+
+/* ✅ สีของสถานะ */
+.bg-warning { background-color: #f39c12; } /* กำลังเตรียมสินค้า */
+.bg-info { background-color: #3498db; } /* พร้อมรับสินค้า */
+.bg-success { background-color: #2ecc71; } /* สำเร็จ */
+
+/* ✅ ปรับขนาดรูปสินค้า */
+.product-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 10px;
+}

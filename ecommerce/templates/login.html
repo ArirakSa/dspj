@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}เข้าสู่ระบบ{% endblock %}
+
+{% block content %}
+<div class="login-container">
+    <h1>เข้าสู่ระบบ</h1>
+
+    {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+                <p class="error-message">{{ message }}</p>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <form method="POST" class="login-form">
+        {% csrf_token %}
+        <label for="username">ชื่อผู้ใช้</label>
+        <input type="text" id="username" name="username" required>
+
+        <label for="password">รหัสผ่าน</label>
+        <input type="password" id="password" name="password" required>
+
+        <button type="submit">เข้าสู่ระบบ</button>
+    </form>
+
+    <p class="register-link">ยังไม่มีบัญชี? <a href="{% url 'register' %}">สมัครสมาชิก</a></p>
+    <p class="register-link">เข้าสู่ระบบแอดมิน <a href="{% url 'custom_admin_login' %}">admin</a></p>
+</div>
+{% endblock %}
