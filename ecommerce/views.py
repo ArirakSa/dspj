@@ -473,9 +473,6 @@ def admin_dashboard(request):
         .annotate(count=Count('payment_method')) \
         .order_by('-count')
 
-    payment_names = [item['payment_method'] for item in payment_methods]
-    payment_counts = [item['count'] for item in payment_methods]
-
     # ตรวจสอบว่าไม่ใช่ค่าที่ว่างเปล่า
     if payment_methods.exists():
         payment_names = [item['payment_method'] for item in payment_methods]
