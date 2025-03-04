@@ -12,7 +12,6 @@ from django import forms
 from .models import Product, Order, Category
 
 class ProductForm(forms.ModelForm):
-    category = forms.ModelChoiceField(queryset=Category.objects.all(), empty_label="เลือกหมวดหมู่")
 
     class Meta:
         model = Product

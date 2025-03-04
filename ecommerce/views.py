@@ -371,13 +371,13 @@ def remove_from_cart(request, product_id):
 
 
 
-@login_required
+
 def product_list(request):
     products = Product.objects.all()  # ดึงสินค้าทั้งหมดจากฐานข้อมูล
     return render(request, 'admin/product_list.html', {'products': products})
 
 
-@login_required
+
 def product_form(request):
 
 
@@ -392,7 +392,7 @@ def product_form(request):
     return render(request, 'admin/product_form.html', {'form': form})
 
 
-@login_required
+
 def product_update(request, pk):
 
 
@@ -407,7 +407,7 @@ def product_update(request, pk):
         form = ProductForm(instance=product)
     return render(request, 'admin/product_form.html', {'form': form})
 
-@login_required
+
 def product_delete(request, pk):
 
     # ค้นหาสินค้า
@@ -421,7 +421,7 @@ def product_delete(request, pk):
     return render(request, 'admin/product_confirm_delete.html', {'product': product})
 
 
-@login_required
+
 def admin_dashboard(request):
     # คำนวณยอดขายรวม
     total_sales = Order.objects.filter(status='completed').aggregate(Sum('total_price'))['total_price__sum'] or 0
@@ -518,34 +518,7 @@ def admin_dashboard(request):
 
 
 
-    completed_orders = Order.objects.filter(status='completed')
-    total_customers_completed = completed_orders.values('user').distinct().count()
 
-    # คำนวณสินค้าที่มียอดสั่งซื้อมากที่สุด
-    #ดึงข้อมูลสินค้าที่มียอดสั่งซื้อมากที่สุดจากหมวดหมู่
-    top_products_by_category = OrderItem.objects.filter(order__status='completed') \
-                                   .values('product__category') \
-                                   .annotate(order_count=Count('product')) \
-                                   .order_by('-order_count')[:10]
-
-    # แยกข้อมูลเพื่อใช้ในกราฟ
-    top_category_names = [item['product__category'] for item in top_products_by_category]
-    top_category_counts = [item['order_count'] for item in top_products_by_category]
-
-    # สร้างกราฟสินค้าที่มียอดสั่งซื้อมากที่สุด แยกตามหมวดหมู่
-    top_products_graph = go.Figure(data=[go.Bar(
-        x=top_category_names,
-        y=top_category_counts,
-        name='ยอดสั่งซื้อมากที่สุด',
-        marker=dict(color='purple')
-    )])
-
-    top_products_graph.update_layout(
-        title='สินค้าที่มียอดสั่งซื้อมากที่สุดตามหมวดหมู่',
-        xaxis_title='หมวดหมู่สินค้า',
-        yaxis_title='จำนวนคำสั่งซื้อ',
-        template='plotly'
-    )
 
     # ดึงข้อมูลหมวดหมู่ทั้งหมดจาก Product และนับจำนวนสินค้าที่อยู่ในหมวดหมู่นั้นๆ
     category_counts = Product.objects.values('category') \
